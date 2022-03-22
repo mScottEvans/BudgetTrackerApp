@@ -1,7 +1,7 @@
 body{
   margin: 3px;
   padding: 0px;
-  
+  background-color: rgb(174, 226, 200);
 }
 
 
@@ -12,7 +12,7 @@ grid-template-columns: repeat(5, 1fr);
 grid-template-rows: repeat(5, 1fr);
 grid-column-gap: px;
 grid-row-gap: 0px;
-  height: 50vh;
+  height: 100vh;
 }
 
 .div1 { grid-area: 1 / 1 / 2 / 6; }
@@ -23,20 +23,25 @@ grid-row-gap: 0px;
 
 .div1{
   border: 3px solid blue;
+  text-align: center;
+  font-size: 3em;
+  padding: 30px;
+  text-decoration: underline;
 }
 .div2{
-  border: 3px solid blue;
+  border: 3px solid rgb(30, 255, 0);
+  width: 100vh;
 }
 .div3{
-  border: 3px solid blue;
+  border: 3px solid rgb(195, 0, 255);
 }
 .div4{
-  border: 3px solid blue;
+  border: 3px solid rgb(255, 0, 0);
 }
 .div5{
-  border: 3px solid blue;
+  border: 3px solid rgb(0, 0, 0);
 }
 
 .div4 img{
-  height: 150px;
+  height: 220px;
 }

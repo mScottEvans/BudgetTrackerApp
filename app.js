@@ -18,8 +18,8 @@ let imgOne = document.getElementById('image-one');
 let imgTwo = document.getElementById('image-two');
 let imgThree = document.getElementById('image-three');
 
-let resultsBtn = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('display-results-list');
+// let resultsBtn = document.getElementById('show-results-btn');
+// let resultsList = document.getElementById('display-results-list');
 
 //*************************CONSTRUCTORS*************************
 function Product(name, fileExtension = 'jpg'){
@@ -51,7 +51,7 @@ new Product('tauntaun');
 new Product('unicorn');
 new Product('water-can');
 new Product('wine-glass');
-console.log(productArray);
+// console.log(productArray);
 
 
 
@@ -73,7 +73,7 @@ function renderImgs(){
       totalIndex.push(randomNumber);
     }
   }
-  console.log(totalIndex);
+  // console.log(totalIndex);
 
   let productOneIndex = totalIndex.pop();
   let productTwoIndex = totalIndex.pop();
@@ -100,6 +100,83 @@ function renderImgs(){
 
 renderImgs();
 
+
+
+function renderChart() {
+
+  let ctx = document.getElementById('myChart');
+  // console.log(ctx);
+
+  let productNames = [];
+  let productVotes = [];
+
+  let productViews = [];
+
+
+  for (let i = 0; i < productArray.length; i++) {
+    productNames.push(productArray[i].productName);
+    productVotes.push(productArray[i].clicks);
+    productViews.push(productArray[i].views);
+  }
+
+  let myChartObj = {
+    type: 'bar',
+    data: {
+      labels: productNames,
+      datasets: [{
+        label: '# of Votes',
+        data: productVotes,
+        backgroundColor: [
+          'red'
+        ],
+        borderColor: [
+          'red'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of Views',
+        data: productViews,
+        backgroundColor: [
+          'blue'
+        ],
+        borderColor: [
+          'blue'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            // This more specific font property overrides the global property
+            font: {
+              size: 50
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const myChart = new Chart(ctx, myChartObj);
+
+}
+
+
+
+
+
+
+
+
+
 //*************************EVENT LISTENERS*************************
 function handleClick(event){
   votingRounds--;
@@ -116,26 +193,27 @@ function handleClick(event){
   
   if(votingRounds === 0){
     imgContainer.removeEventListener('click', handleClick);
+    renderChart();
     return;
   }
 
 }
 
 
-function handleShowResults(){
-  if(votingRounds === 0){
-    for(let i = 0; i < productArray.length; i++){
-      let li = document.createElement('li');
+// function handleShowResults(){
+//   if(votingRounds === 0){
+//     for(let i = 0; i < productArray.length; i++){
+//       let li = document.createElement('li');
 
-      li.textContent = `${productArray[i].productName} was viewed ${productArray[i].views} and clicked on ${productArray[i].clicks} times.`;
-      resultsList.appendChild(li);
-    }
-  }
-}
+//       li.textContent = `${productArray[i].productName} was viewed ${productArray[i].views} and clicked on ${productArray[i].clicks} times.`;
+//       resultsList.appendChild(li);
+//     }
+//   }
+// }
 
 //*************************EVENT HANDLERS*************************
 imgContainer.addEventListener('click', handleClick);
-resultsBtn.addEventListener('click', handleShowResults);
+// resultsBtn.addEventListener('click', handleShowResults);
 
 
 
