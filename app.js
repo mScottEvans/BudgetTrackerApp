@@ -5,7 +5,7 @@
 
 
 //*************************GLOBAL VARIABLES/IMPORTS*************************
-let votingRounds = 25;
+let votingRounds = 3;
  
 let productArray = [];
 
@@ -21,6 +21,18 @@ let imgThree = document.getElementById('image-three');
 // let resultsBtn = document.getElementById('show-results-btn');
 // let resultsList = document.getElementById('display-results-list');
 
+
+// ****** Local Storage PT 2***************
+// STEP3: Get it out of local storage
+
+let retrievedProduct = localStorage.getItem('product');
+// console.log('Retrieved Products >>>',retrievedProduct);
+
+//  Step4: PARSE my data for my code to reuse
+let parsedProduct = JSON.parse(retrievedProduct);
+// console.log('Parsed Producys', parsedProduct);
+
+
 //*************************CONSTRUCTORS*************************
 function Product(name, fileExtension = 'jpg'){
   this.productName = name;
@@ -30,28 +42,34 @@ function Product(name, fileExtension = 'jpg'){
 
   productArray.push(this);
 }
+// *********Step3: LOCAL STORAGE ************
+if(retrievedProduct){
+  productArray = parsedProduct;
+} else{
+  new Product('bag');
+  new Product('sweep', 'png');
+  new Product('banana');
+  new Product('bathroom');
+  new Product('boots');
+  new Product('breakfast');
+  new Product('bubblegum');
+  new Product('chair');
+  new Product('cthulhu');
+  new Product('dog-duck');
+  new Product('dragon');
+  new Product('banana');
+  new Product('pen');
+  new Product('pet-sweep');
+  new Product('scissors');
+  new Product('shark');
+  new Product('tauntaun');
+  new Product('unicorn');
+  new Product('water-can');
+  new Product('wine-glass');
+  // console.log(productArray);
 
-new Product('bag');
-new Product('sweep', 'png');
-new Product('banana');
-new Product('bathroom');
-new Product('boots');
-new Product('breakfast');
-new Product('bubblegum');
-new Product('chair');
-new Product('cthulhu');
-new Product('dog-duck');
-new Product('dragon');
-new Product('banana');
-new Product('pen');
-new Product('pet-sweep');
-new Product('scissors');
-new Product('shark');
-new Product('tauntaun');
-new Product('unicorn');
-new Product('water-can');
-new Product('wine-glass');
-// console.log(productArray);
+}
+
 
 
 
@@ -194,6 +212,16 @@ function handleClick(event){
   if(votingRounds === 0){
     imgContainer.removeEventListener('click', handleClick);
     renderChart();
+
+    // *****LOCAL STORAGE BEGINS****
+    // Step:1 Stringify our data before it goes into local storage
+    let stringifiedProduct = JSON.stringify(productArray);
+
+    // console.log('Stringified Product >>>', stringifiedProduct);
+
+    // Step:2 Set it up in local storage
+    localStorage.setItem('product', stringifiedProduct);
+
     return;
   }
 

@@ -1,7 +1,7 @@
 body{
   margin: 3px;
   padding: 0px;
-  background-color: rgb(174, 226, 200);
+  background-color: rgb(178, 180, 179);
 }
 
 
@@ -22,21 +22,21 @@ grid-row-gap: 0px;
 .div5 { grid-area: 4 / 2 / 5 / 6; }
 
 .div1{
-  border: 3px solid blue;
+  border: 3px solid rgb(0, 0, 0);
   text-align: center;
   font-size: 3em;
   padding: 30px;
   text-decoration: underline;
 }
 .div2{
-  border: 3px solid rgb(30, 255, 0);
+  border: 3px solid rgb(0, 0, 0);
   width: 100vh;
 }
 .div3{
-  border: 3px solid rgb(195, 0, 255);
+  border: 3px solid rgb(0, 0, 0);
 }
 .div4{
-  border: 3px solid rgb(255, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
 }
 .div5{
   border: 3px solid rgb(0, 0, 0);
