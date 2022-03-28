@@ -5,7 +5,7 @@
 
 
 //*************************GLOBAL VARIABLES/IMPORTS*************************
-let votingRounds = 3;
+let votingRounds = 25;
  
 let productArray = [];
 
